@@ -2,6 +2,9 @@ package org.prutha.rest.messanger.model;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Message {
 
 	private int id;
