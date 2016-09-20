@@ -18,6 +18,7 @@ public class Message {
 		this.id = id;
 		this.message = message;
 		this.author = author;
+		this.date = new Date();
 	}
 
 	public int getId() {
