@@ -18,12 +18,19 @@ import org.prutha.rest.messanger.service.ProfileService;
 @Path("/profiles")
 public class ProfileResource {
 
-	ProfileService service = new ProfileService();
+	private ProfileService service = new ProfileService();
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Profile> getAllProfiles() {
 		return service.getAllProfiles();
+	}
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Profile addProfile(Profile profile) {
+		return service.addProfile(profile);
 	}
 
 	@GET
@@ -33,24 +40,19 @@ public class ProfileResource {
 		return service.getProfile(profileName);
 	}
 
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Profile addProfile(Profile profile) {
-		return service.addProfile(profile);
-	}
-	
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Profile updateProfile( Profile profile){
+	@Path("/{profileName}")
+	public Profile updateProfile(@PathParam("profileName") String profileName, Profile profile) {
+		profile.setProfileName(profileName);
 		return service.updateProfile(profile);
 	}
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-    public void removeProfile( String profileName){
+	@Path("/{profileName}")
+	public void removeProfile(@PathParam("profileName") String profileName) {
 		service.removeProfile(profileName);
 	}
-
 }
