@@ -57,4 +57,14 @@ public class DemoResource {
 				"Headers:" + headers.getMediaType().toString() + "\n" +
 				"Cookies:" + headers.getCookies().toString();
 	}
+	
+	/**
+	 * Another way is using the @BeanParam annotation. Here, you create a new java class
+	 * (bean) that has all these annotations it in. In the method signature, 
+	 * instead of accessing each individual parameter, you can instead simply use the
+	 * BeanParam.
+	 * Refer : MessageResource and MessageFilterBean classes.
+	 *  
+	 */
+	
 }
