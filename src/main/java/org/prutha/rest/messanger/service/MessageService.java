@@ -24,10 +24,8 @@ public class MessageService {
 		return messages.get(id);
 	}
 	
-	public Message deleteMessage( int id ){
-		Message message = messages.get(id);
-		messages.remove(message);
-		return message;
+	public void deleteMessage( int id ){
+		messages.remove(messages.get(id));
 	}
 	
 	public Message updateMessage( Message message ){
