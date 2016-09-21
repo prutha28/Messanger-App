@@ -14,13 +14,13 @@ import org.prutha.rest.messanger.model.Profile;
 public class Database {
 
 	private static Map<Integer, Message> messages = new HashMap<Integer, Message>();
-	private static Map<Integer, Profile> profiles = new HashMap<Integer, Profile>();
+	private static Map<String, Profile> profiles = new HashMap<String, Profile>();
 	
 	public static Map<Integer, Message> getAllMessages(){
 		return messages;
 	}
 	
-	public static Map<Integer, Profile> getAllProfiles(){
+	public static Map<String, Profile> getAllProfiles(){
 		return profiles;
 	}
 }
