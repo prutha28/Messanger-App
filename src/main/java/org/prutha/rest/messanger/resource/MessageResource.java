@@ -23,20 +23,20 @@ public class MessageResource {
 
 	MessageService service = new MessageService();
 
-//	@GET
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public List<Message> getMessages(@QueryParam("year") int year,
-//									 @QueryParam("start") int start,
-//									 @QueryParam("size") int size) {
-//		if (year > 0) {
-//			return service.getAllMessagesForYear(year);
-//		}
-//
-//		if (start > 0 && size > 0)
-//			return service.getAllMessagesPaginated(start, size);
-//
-//		return service.getAllMessages();
-//	}
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Message> getMessages(@QueryParam("year") int year,
+									 @QueryParam("start") int start,
+									 @QueryParam("size") int size) {
+		if (year > 0) {
+			return service.getAllMessagesForYear(year);
+		}
+
+		if (start > 0 && size > 0)
+			return service.getAllMessagesPaginated(start, size);
+
+		return service.getAllMessages();
+	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -80,4 +80,23 @@ public class MessageResource {
 	public Message addMessage(Message message) {
 		return service.addMessage(message);
 	}
+	
+	/** Dealing with sub-resources **/
+	@Path("/{messageId}/comments/")
+	public CommentResource getCommentResource(){
+		return new CommentResource();
+	}
+	
+	/** Dealing with sub-resources **/
+	@Path("/{messageId}/likes/")
+	public LikeResource getLikeResource(){
+		return new LikeResource();
+	}
+	
+	/** Dealing with sub-resources **/
+	@Path("/{messageId}/shares/")
+	public ShareResource getShareResource(){
+		return new ShareResource();
+	}
+	
 }

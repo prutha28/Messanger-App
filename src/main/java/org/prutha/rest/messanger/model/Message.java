@@ -1,8 +1,11 @@
 package org.prutha.rest.messanger.model;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 public class Message {
@@ -11,6 +14,16 @@ public class Message {
 	private String message;
 	private String author;
 	private Date date;
+	private Map<String, Comment> comments = new HashMap<>();
+
+	@XmlTransient
+	public Map<String, Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Map<String, Comment> comments) {
+		this.comments = comments;
+	}
 
 	public Message() {
 
